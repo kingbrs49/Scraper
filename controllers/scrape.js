@@ -4,7 +4,6 @@ var db = require("../models");
 router.get("/scrape", function (req, res) {
     axios.get("https://apnews.com/apf-sports").then(function (response) {
         var $ = cheerio.load(response.data);
-        //$("#root.router.Main.Body.Hub.fluid-wrrouterer.with-image-desktop.with-image-mobile.Leaderboard.feed.Feedcard.Component-wireStory-0-2-17.card-0-2-18")
         $("div.CardHeadline").each(function (i, element) {
             var result = {};
             // console.log(result);

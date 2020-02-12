@@ -31,8 +31,8 @@ mongoose.connect("mongodb://localhost/scraper", { useNewUrlParser: true });
 const connection = mongoose.connection;
 
 connection.once('open', function() {
-    console.log('MongoDB Connected!')
-})
+    console.log('MongoDB Connected!');
+});
 
 app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);

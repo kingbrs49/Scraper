@@ -14,6 +14,14 @@ router.get("/", function(req, res) {
     });
 });
 
-
+router.post("/api/articles", function (req, res) {
+    db.Article.create({})
+    .then(function (dbArticle) {
+        res.json(dbArticle);
+    })
+    .catch(function (err) {
+        res.json(err);
+    });
+});
 
 module.exports = router;
