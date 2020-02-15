@@ -4,8 +4,8 @@ var mongoose = require("mongoose");
 
 var exphbs = require("express-handlebars");
 
-var axios = require("axios");
-var cheerio = require("cheerio");
+// var axios = require("axios");
+// var cheerio = require("cheerio");
 
 var db = require("./models");
 

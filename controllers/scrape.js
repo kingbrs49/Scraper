@@ -1,32 +1,49 @@
 var router = require("express").Router();
 var db = require("../models");
 
+var axios = require("axios");
+var cheerio = require("cheerio");
+
 router.get("/scrape", function (req, res) {
     axios.get("https://apnews.com/apf-sports").then(function (response) {
         var $ = cheerio.load(response.data);
-        $("div.CardHeadline").each(function (i, element) {
-            var result = {};
-            // console.log(result);
 
-            result.title = $(this)
-                .children("a")
+    
+
+        var result = [];
+
+        $(".FeedCard").each(function (i, element) {
+            var article = {};
+            article.title = $(this)
+                .find("h1")
                 .text();
-                // console.log(this);
-            result.link = $(this)
-                .children("a")
+            article.link = "https://apnews.com/apf-sports"+$(this)
+                .find("a")
+                .first()
                 .attr("href");
-                // console.log(result.link);
+            article.description = $(this)
+                .find("p")
+                .first()
+                .text();
 
-            db.Article.create(result)
+            
+            if(article.title && article.link && article.description) {
+                result.push(article);
+            }
+        });
+
+    
+        db.Article.insertMany(result)
                 .then(function (dbArticle) {
-                    console.log(dbArticle);
+
+                    res.json(dbArticle);
                 })
                 .catch(function (err) {
                     console.log(err);
             });
-        });
+        
 
-        res.send("Scrape Complete!");
+        
     });
 });
 
