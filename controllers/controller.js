@@ -4,10 +4,12 @@ var router = express.Router();
 
 var db = require("../models");
 
-router.get("/", function(req, res) {
+router.get("/home", function(req, res) {
+
     db.Article.find({})
     .then(function (dbArticle) {
-        res.json(dbArticle);
+        // res.json(dbArticle)
+        res.render("index", {article: dbArticle});
     })
     .catch(function (err) {
         res.json(err);
