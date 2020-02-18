@@ -4,9 +4,12 @@ var router = express.Router();
 
 var db = require("../models");
 
-router.get("/home", function(req, res) {
+var scrape = require("./scrape");
 
-    db.Article.find({})
+router.get("/home", function(req, res) {
+    db.Article.find({
+
+    })
     .then(function (dbArticle) {
         // res.json(dbArticle)
         res.render("index", {article: dbArticle});
@@ -16,8 +19,21 @@ router.get("/home", function(req, res) {
     });
 });
 
+// FOUND THE POST ROUTE (BELOW)
+
 router.post("/api/articles", function (req, res) {
-    db.Article.create({})
+    console.log(req.body);
+    db.Article.create({
+        title: scrape
+            .article
+            .title,
+        link: scrape
+            .article
+            .link,
+        description: scrape
+            .article
+            .description
+    })
     .then(function (dbArticle) {
         res.json(dbArticle);
     })

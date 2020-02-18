@@ -7,17 +7,13 @@ var cheerio = require("cheerio");
 router.get("/scrape", function (req, res) {
     axios.get("https://apnews.com/apf-sports").then(function (response) {
         var $ = cheerio.load(response.data);
-
-    
-
         var result = [];
-
         $(".FeedCard").each(function (i, element) {
             var article = {};
             article.title = $(this)
                 .find("h1")
                 .text();
-            article.link = "https://apnews.com/apf-sports"+$(this)
+            article.link = "https://apnews.com/apf-sports" + $(this)
                 .find("a")
                 .first()
                 .attr("href");
@@ -25,7 +21,6 @@ router.get("/scrape", function (req, res) {
                 .find("p")
                 .first()
                 .text();
-
             
             if(article.title && article.link && article.description) {
                 result.push(article);
@@ -35,15 +30,11 @@ router.get("/scrape", function (req, res) {
     
         db.Article.insertMany(result)
                 .then(function (dbArticle) {
-
                     res.json(dbArticle);
                 })
                 .catch(function (err) {
                     console.log(err);
             });
-        
-
-        
     });
 });
 
