@@ -1,11 +1,24 @@
-
-
 <div class="jumbotron jumbotron-fluid text-center">
-  <h1 class="display-4">
-      <b>Sports Scraper</b>
-      </h1>
-  <p class="lead">Get the latest sports stories from the Associated Press!</p>
+    <h1 class="display-4">
+        <b>
+            Your Saved Sports Stories
+        </b>
+    </h1>
 </div>
 
-<h2>Your Saved Sports Stories</h2>
 
+{{#each article}}
+{{#if saved}}
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <a href={{this.link}}>
+                <h4>{{this.title}}</h4>
+            </a>
+            <p class="lead">{{this.description}}</p>
+        </div>
+    </div>
+</div>
+<br>
+{{/if}}
+{{/each}}

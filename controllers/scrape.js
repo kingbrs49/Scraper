@@ -26,7 +26,6 @@ router.get("/scrape", function (req, res) {
                 result.push(article);
             }
         });
-
     
         db.Article.insertMany(result)
                 .then(function (dbArticle) {

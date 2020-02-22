@@ -1,35 +1,28 @@
-
-
 <div class="jumbotron jumbotron-fluid text-center">
-  <h1 class="display-4">
-      <b>Sports Scraper</b>
-      </h1>
-  <p class="lead">Get the latest sports stories from the Associated Press!</p>
+    <h1 class="display-4">
+        <b>AP Sports Scraper</b>
+    </h1>
+    <p class="lead">Get the latest sports stories from the Associated Press!</p>
 </div>
 
 {{#each article}}
-    <div class="container">
-        <div class="card">
-            <div class="card-body">
-                <a href={{this.link}}>
-                    <h4>{{this.title}}</h4>
-                </a>
-                <p class="lead">{{this.description}}</p>
-                <a class="btn btn-outline-primary" data-articleId="{{_id}}" role="button">
-                    Save
-                </a>
-                <a class="btn btn-outline-primary" role="button">
-                    Comment
-                </a>
-            </div>
+{{!-- {{#unless saved}} --}}
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <a href={{this.link}}>
+                <h4>{{this.title}}</h4>
+            </a>
+            <p class="lead">{{this.description}}</p>
+            <a class="btn btn-outline-primary" data-articleId="{{ this._id }}" role="button">
+                Save
+            </a>
+            <a class="btn btn-outline-primary" role="button">
+                Comment
+            </a>
         </div>
     </div>
-    <br>
+</div>
+<br>
+{{!-- {{/unless}} --}}
 {{/each}}
-
-
-
-
-
-
-

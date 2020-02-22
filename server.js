@@ -22,7 +22,7 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-var routes = require("./controllers/controller");
+var routes = require("./controllers/controller.js");
 var scrapedRoutes = require("./controllers/scrape.js");
 app.use(routes);
 app.use(scrapedRoutes);

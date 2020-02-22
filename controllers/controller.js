@@ -4,15 +4,23 @@ var router = express.Router();
 
 var db = require("../models");
 
-var scrape = require("./scrape");
+//var scrape = require("./scrape");
 
-router.get("/home", function(req, res) {
-    db.Article.find({
-
-    })
+router.get("/", function(req, res) {
+    db.Article.find({})
     .then(function (dbArticle) {
         // res.json(dbArticle)
         res.render("index", {article: dbArticle});
+    })
+    .catch(function (err) {
+        res.json(err);
+    });
+});
+
+router.get("/saved", function(req, res) {
+    db.Article.find({saved: "true"})
+    .then(function (dbArticle) {
+        res.render("saved", {article: dbArticle});
     })
     .catch(function (err) {
         res.json(err);
@@ -24,13 +32,13 @@ router.get("/home", function(req, res) {
 router.post("/api/articles", function (req, res) {
     console.log(req.body);
     db.Article.create({
-        title: scrape
+        title: scrapedRoutes
             .article
             .title,
-        link: scrape
+        link: scrapedRoutes
             .article
             .link,
-        description: scrape
+        description: scrapedRoutes
             .article
             .description
     })
