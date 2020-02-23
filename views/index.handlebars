@@ -6,7 +6,7 @@
 </div>
 
 {{#each article}}
-{{!-- {{#unless saved}} --}}
+{{#unless this.saved}}
 <div class="container">
     <div class="card">
         <div class="card-body">
@@ -24,5 +24,5 @@
     </div>
 </div>
 <br>
-{{!-- {{/unless}} --}}
+{{/unless}}
 {{/each}}

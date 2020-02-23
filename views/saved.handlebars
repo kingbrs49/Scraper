@@ -4,11 +4,12 @@
             Your Saved Sports Stories
         </b>
     </h1>
+    <p class="lead">See what you scraped from the Associated Press Sports site!</p>
 </div>
 
 
 {{#each article}}
-{{#if saved}}
+{{#if this.saved}}
 <div class="container">
     <div class="card">
         <div class="card-body">
@@ -16,6 +17,9 @@
                 <h4>{{this.title}}</h4>
             </a>
             <p class="lead">{{this.description}}</p>
+            <a class="btn btn-outline-primary" role="button">
+                Comment
+            </a>
         </div>
     </div>
 </div>

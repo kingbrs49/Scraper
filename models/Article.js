@@ -18,10 +18,10 @@ var ArticleSchema = new Schema({
     note: {
         type: Schema.Types.ObjectId,
         ref: "Note"
-    // },
-    // saved: {
-    //     type: String,
-    //     default: "false"
+    },
+    saved: {
+        type: Boolean,
+        default: false
     }
 });
 
