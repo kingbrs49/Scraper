@@ -28,13 +28,14 @@ router.get("/scrape", function (req, res) {
         });
     
         db.Article.insertMany(result)
-                .then(function (dbArticle) {
-                    res.json(dbArticle);
-                })
-                .catch(function (err) {
-                    console.log(err);
-            });
+            .then(function (dbArticle) {
+                res.json(dbArticle);
+            })
+            .catch(function (err) {
+                console.log(err);
+        });
     });
+    res.send("Scrape Complete!");
 });
 
 router.get("/articles", function (req, res) {

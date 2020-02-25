@@ -13,7 +13,7 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 
-app.use(logger("dev"));
+// app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 

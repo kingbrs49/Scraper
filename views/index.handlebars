@@ -14,12 +14,28 @@
                 <h4>{{this.title}}</h4>
             </a>
             <p class="lead">{{this.description}}</p>
-            <a class="btn btn-outline-primary" data-articleId="{{ this._id }}" role="button">
+            <button class="btn btn-outline-primary" id="saveArticle">
                 Save
-            </a>
-            <a class="btn btn-outline-primary" role="button">
+            </button>
+            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#articleComment">
                 Comment
-            </a>
+            </button>
+            <div id="articleComment" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Care To Comment?</h4>
+                        </div>
+                        <div class="modal-body">
+                            <textarea class="form-control" id="notes"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" id="saveComment" data-dismiss="modal">Save Comment</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
