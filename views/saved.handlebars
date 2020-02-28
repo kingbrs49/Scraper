@@ -19,7 +19,7 @@
             <button class="btn btn-outline-primary deleteArticle" data-id={{this._id}}>
                 Delete
             </button>
-            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#articleComment">
+            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target=".articleComment">
                 Comment
             </button>
             <div class="modal fade articleComment" role="dialog">
@@ -32,7 +32,7 @@
                             <textarea class="form-control notes"></textarea>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" id="saveComment" data-dismiss="modal">Save Comment</button>
+                            <button type="button" class="btn btn-default saveComment" data-dismiss="modal">Save Comment</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>
                     </div>
