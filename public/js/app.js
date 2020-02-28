@@ -1,11 +1,34 @@
-// $.getJSON("/articles", function (data) {
-//     for (var i = 0; i < data.length; i++) {
-//         $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
-//     }
-// });
+$.getJSON("/articles", function (data) {
+    for (var i = 0; i < data.length; i++) {
+        $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
+    }
+});
 
-$(document).on("click", "#saveArticle", function () {
-    var thisId = $(this).attr()
+$(".saveArticle").on("click", function () {
+    var thisId = $(this).attr("data-id");
+    console.log(thisId);
+
+    $.ajax({
+        method: "PUT",
+        url: "/api/articles/" + thisId,
+        data: {
+            saved: true
+        }
+    }).then(function () {
+        window.location.reload();
+    });
+});
+
+$(".deleteArticle").on("click", function () {
+    var thisId = $(this).attr("data-id");
+    console.log(thisId);
+
+    $.ajax({
+        method: "DELETE",
+        url: "/api/articles/" + thisId,
+    }).then(function () {
+        window.location.reload();
+    });
 });
 
 // $("#saveComment").on("click", function () {

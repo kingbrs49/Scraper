@@ -48,6 +48,18 @@ router.get("/articles", function (req, res) {
         });
 });
 
+router.post("/articles/save/:id", function (req, res) {
+    db.Article.findOneAndUpdate({ _id: req.params.id }, { saved: true })
+    .then(err, dbArticle); {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.send(dbArticle);
+        }
+    }
+});
+
 router.get("/articles/:id", function (req, res) {
     db.Article.findOne({ _id: req.params.id })
     .populate("note")
@@ -64,6 +76,16 @@ router.post("/articles/:id", function (req, res) {
     .then(function (dbNote) {
         return db.Article.findOneAndUpdate({ _id: req.params.id }, { note: dbNote._id }, {new: true });
     })
+    .then(function (dbArticle) {
+        res.json(dbArticle);
+    })
+    .catch(function (err) {
+        res.json(err);
+    });
+});
+
+router.delete("/api/articles/:id", function (req, res) {
+    db.Article.findOneAndDelete({ _id: req.params.id })
     .then(function (dbArticle) {
         res.json(dbArticle);
     })

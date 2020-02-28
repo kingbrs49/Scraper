@@ -1,6 +1,8 @@
 <div class="jumbotron jumbotron-fluid text-center">
     <h1 class="display-4">
-        <b>AP Sports Scraper</b>
+        <b>
+            AP Sports Scraper
+        </b>
     </h1>
     <p class="lead">Get the latest sports stories from the Associated Press!</p>
 </div>
@@ -14,23 +16,23 @@
                 <h4>{{this.title}}</h4>
             </a>
             <p class="lead">{{this.description}}</p>
-            <button class="btn btn-outline-primary" id="saveArticle">
+            <button class="btn btn-outline-primary saveArticle" data-id={{this._id}}>
                 Save
             </button>
-            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#articleComment">
+            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target=".articleComment">
                 Comment
             </button>
-            <div id="articleComment" class="modal fade" role="dialog">
+            <div class="modal fade articleComment" role="dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title">Care To Comment?</h4>
                         </div>
                         <div class="modal-body">
-                            <textarea class="form-control" id="notes"></textarea>
+                            <textarea class="form-control notes"></textarea>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" id="saveComment" data-dismiss="modal">Save Comment</button>
+                            <button type="button" class="btn btn-default saveComment" data-dismiss="modal">Save Comment</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>
                     </div>

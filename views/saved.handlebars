@@ -7,7 +7,6 @@
     <p class="lead">See what you scraped from the Associated Press Sports site!</p>
 </div>
 
-
 {{#each article}}
 {{#if this.saved}}
 <div class="container">
@@ -17,20 +16,20 @@
                 <h4>{{this.title}}</h4>
             </a>
             <p class="lead">{{this.description}}</p>
-            <button class="btn btn-outline-primary" id="deleteArticle">
+            <button class="btn btn-outline-primary deleteArticle" data-id={{this._id}}>
                 Delete
             </button>
             <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#articleComment">
                 Comment
             </button>
-            <div id="articleComment" class="modal fade" role="dialog">
+            <div class="modal fade articleComment" role="dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title">Care To Comment?</h4>
                         </div>
                         <div class="modal-body">
-                            <textarea class="form-control" id="notes"></textarea>
+                            <textarea class="form-control notes"></textarea>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" id="saveComment" data-dismiss="modal">Save Comment</button>

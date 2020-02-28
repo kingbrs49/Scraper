@@ -7,7 +7,7 @@ var db = require("../models");
 //var scrape = require("./scrape");
 
 router.get("/", function(req, res) {
-    db.Article.find({})
+    db.Article.find({saved: "false"})
     .then(function (dbArticle) {
         // res.json(dbArticle)
         res.render("index", {article: dbArticle});
@@ -27,20 +27,25 @@ router.get("/saved", function(req, res) {
     });
 });
 
-// FOUND THE POST ROUTE (BELOW)
+router.put("/api/articles/:id", function (req, res) {
+    db.Article.findOneAndUpdate({ _id: req.params.id }, req.body)
+    .then(function (dbArticle) {
+        res.json(dbArticle);
+    })
+})
 
 router.post("/api/articles", function (req, res) {
     console.log(req.body);
     db.Article.create({
-        title: scrapedRoutes
-            .article
-            .title,
-        link: scrapedRoutes
-            .article
-            .link,
-        description: scrapedRoutes
-            .article
-            .description
+        // title: scrapedRoutes
+        //     .article
+        //     .title,
+        // link: scrapedRoutes
+        //     .article
+        //     .link,
+        // description: scrapedRoutes
+        //     .article
+        //     .description
     })
     .then(function (dbArticle) {
         res.json(dbArticle);
