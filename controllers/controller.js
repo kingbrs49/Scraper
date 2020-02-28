@@ -9,7 +9,6 @@ var db = require("../models");
 router.get("/", function (req, res) {
     db.Article.find({ saved: "false" })
         .then(function (dbArticle) {
-            // res.json(dbArticle)
             res.render("index", { article: dbArticle });
         })
         .catch(function (err) {
@@ -27,13 +26,17 @@ router.get("/saved", function (req, res) {
         });
 });
 router.get("/api/articles/:id", function (req, res) {
-    db.Article.findOne({ _id: req.params.id }).populate("note").then(function (result) {
-        res.json(result)
+    db.Article.findOne({ _id: req.params.id })
+        .populate("note")
+        .then(function (result) {
+            res.json(result);
     });
 });
 
 router.put("/api/articles/:id", function (req, res) {
-    db.Article.findOneAndUpdate({ _id: req.params.id }, req.body)
+    db.Article.findOneAndUpdate({ 
+        _id: req.params.id 
+    }, req.body)
         .then(function (dbArticle) {
             res.json(dbArticle);
         });
@@ -72,7 +75,7 @@ router.post("/api/comments/:articleid", function (req, res) {
                     $push: { note: commentId }
                 }
             ).then(function (article) {
-                res.json(article)
+                res.json(article);
             });
         });
 });

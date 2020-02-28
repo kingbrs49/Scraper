@@ -7,8 +7,7 @@ $.getJSON("/articles", function (data) {
 
 $(".saveArticle").on("click", function () {
     var thisId = $(this).attr("data-id");
-    console.log(thisId);
-
+    //console.log(thisId);
     $.ajax({
         method: "PUT",
         url: "/api/articles/" + thisId,
@@ -22,7 +21,7 @@ $(".saveArticle").on("click", function () {
 
 $(".deleteArticle").on("click", function () {
     var thisId = $(this).attr("data-id");
-    console.log(thisId);
+    //console.log(thisId);
 
     $.ajax({
         method: "DELETE",
@@ -36,23 +35,20 @@ $(".saveComment").on("click", function () {
     const comment = $(".notes").val();
     const commentObj = {
         body: comment
-    }
-
+    };
     $.ajax({
         method: "POST",
         url: "/api/comments/" + globalArticleId,
         data: commentObj
     }).then(function (res) {
-        console.log(res)
-    })
+        //console.log(res);
+    });
 });
-
 
 $('.comment').on("click", function () {
     const id = $(this).attr("data-id");
     globalArticleId = id;
     const commentSection = $("#comments");
-    //    console.log(id);
 
     commentSection.empty();
 
@@ -60,56 +56,11 @@ $('.comment').on("click", function () {
         method: "GET",
         url: "/api/articles/" + id,
     }).then(function (res) {
-        console.log(res.note.length)
-
-
+        //console.log(res.note.length)
         for (let i = 0; i < res.note.length; i++) {
-            const pTag = $("<p>");
+            const pTag = $("<p class='lead' align='center'>");
             pTag.text(res.note[i].body);
-
             commentSection.append(pTag);
         }
-
-
     });
-
 });
-
-// $(".articleComment").on("click", function () {
-//     $(".notes").empty();
-//     var thisId = $(this).attr("data-id");
-
-//     $.ajax({
-//         method: "GET",
-//         url: "/articles/" + thisId
-//     })
-//     .then(function (data) {
-//         console.log(data);
-//          
-//         
-//         if (data.note) {
-//             $("#titleinput").val(data.note.title);
-//             $("#bodyinput").val(data.note.body);
-//         }
-//     });
-// });
-
-// $(".saveComment").on("click", function () {
-//     var thisId = $(this).attr("data-id");
-
-//     $.ajax({
-//         method: "POST",
-//         url: "/articles/" + thisId,
-//         data: {
-//             title: $("#titleinput").val(),
-//             body: $("#bodyinput").val()
-//         }
-//     })
-//     .then(function (data) {
-//         console.log(data);
-//         $("#notes").empty();
-//     });
-
-//     $("#titleinput").val("");
-//     $("#bodyinput").val("");
-// });
