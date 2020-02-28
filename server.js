@@ -23,12 +23,12 @@ app.use(express.static("public"));
 app.use(routes);
 app.use(scrapedRoutes);
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/scraper";
 
 mongoose.connect(MONGODB_URI);
 
 // mongoose.connect("mongodb://localhost/scraper", { useNewUrlParser: true });
-// const connection = mongoose.connection;
+const connection = mongoose.connection;
 
 connection.once('open', function() {
     console.log('MongoDB Connected!');
