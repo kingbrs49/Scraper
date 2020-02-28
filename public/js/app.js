@@ -42,36 +42,36 @@ $(".saveComment").on("click", function () {
         method: "POST",
         url: "/api/comments/" + globalArticleId,
         data: commentObj
-    }).then(function(res){
+    }).then(function (res) {
         console.log(res)
     })
 });
 
 
-$('.comment').on("click", function(){
- const id = $(this).attr("data-id");
- globalArticleId = id;
-   const commentSection = $("#comments");
-//    console.log(id);
+$('.comment').on("click", function () {
+    const id = $(this).attr("data-id");
+    globalArticleId = id;
+    const commentSection = $("#comments");
+    //    console.log(id);
 
-   commentSection.empty();
+    commentSection.empty();
 
-   $.ajax({
-    method: "GET",
-    url: "/api/articles/" + id,
-}).then(function (res) {
-    console.log(res.note.length)
+    $.ajax({
+        method: "GET",
+        url: "/api/articles/" + id,
+    }).then(function (res) {
+        console.log(res.note.length)
 
 
-    for(let i =0; i < res.note.length;i++){
-        const pTag = $("<p>");
-        pTag.text(res.note[i].body);
+        for (let i = 0; i < res.note.length; i++) {
+            const pTag = $("<p>");
+            pTag.text(res.note[i].body);
 
-        commentSection.append(pTag);
-    }
+            commentSection.append(pTag);
+        }
 
-    
-});
+
+    });
 
 });
 
