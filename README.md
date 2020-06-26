@@ -1,9 +1,8 @@
-# Scraper
-Let's try scraping sports websites. Any sports website. Maybe ESPN. Maybe Fox Sports. Maybe NBA.com. Maybe SB Nation. Or I could scrap all that and scrape something easy.
-----------------------------------------------------------------
+# AP Sports Scraper
+
 Hello! And Welcome to the AP Sports Scraper!
 
-In this full-stack application, you can grab the latest sports articles, save them for yourself, and comment on them, all from the Associated Press Sports website!
+In this full-stack application, utilizing a combination of MongoDB, Mongoose, Cheerio (for Web scraping), Node and Express, you can grab the latest sports articles from the official Associated Press Sports website. Additionally, you can save articles for later, and comment on them for future posterity. 
 
 Simply go to my main page, and type in "/scrape" into the address bar to get the latest stories. From there, you can hit the "Save" Button to hold it in the "Saved" page. Hit the "Comment" button to open up the comments modal and say whatever you want about it -- hit "Save" in the modal to hold on to that comment for future viewing.
 
